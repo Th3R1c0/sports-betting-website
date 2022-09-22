@@ -24,7 +24,6 @@ const Home: NextPage = () => {
       .catch((err) => console.error(err));
   }, []);
 
-
   return (
     <div className="flex min-h-screen flex-col items-center  p-2">
       <Head>
@@ -35,12 +34,12 @@ const Home: NextPage = () => {
         <p>click one to fetch, PYTHON_BACKEND_ONLINE </p>
       </div>
       <div className="w-full h-full flex flex-col space-y-4 ">
-        {data.length > 0 ?
+        {data.length > 0 ? (
           data.map((sport) => {
             return (
               <div
                 onClick={() => router.push(`/odds/${sport.key}`)}
-                className="w-full h-max p-2 rounded-md border-black border-2 hover:bg-gray-100 text-4xl font-bold"
+                className="w-full h-max p-2 rounded-md border-black border-2 hover:cursor-pointer hover:bg-gray-100 text-4xl font-bold"
                 key={sport.key}
               >
                 <p>
@@ -48,7 +47,13 @@ const Home: NextPage = () => {
                 </p>
               </div>
             );
-          }): <div className="flex items-center text-center justify-center text-4xl"> <p>loading</p></div>}
+          })
+        ) : (
+          <div className="flex items-center text-center justify-center text-4xl">
+            {' '}
+            <p>loading</p>
+          </div>
+        )}
       </div>
     </div>
   );
